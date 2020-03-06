@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -35,78 +36,71 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SliverAppBar'),
-      ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          const SliverAppBar(
-            floating: true,
-            pinned: true,
-            snap: true,
-            expandedHeight: 250.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text('Demo'),
+        body: DefaultTabController(
+      length: 3,
+      child: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              expandedHeight: 200.0,
+              floating: true,
+              pinned: true,
+              snap: true,
+              actionsIconTheme: IconThemeData(opacity: 0.0),
+              flexibleSpace: Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  Positioned.fill(
+                    child: Image.asset(
+                      "assets/images/tree.jpg",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left:200.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "My Portfolio",
+                          style: TextStyle(fontSize: 50.0, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          SliverFixedExtentList(
-            itemExtent: 200.0,
-            delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                return Container(
-                  alignment: Alignment.center,
-                  color: Colors.lightBlue[100 * (index % 9)],
-                  child: Text('list item $index $_counter',
-                    style: TextStyle(fontSize: 30),),
-                );
-              },
+            SliverPadding(
+              padding: new EdgeInsets.all(16.0),
+              sliver: new SliverList(
+                delegate: new SliverChildListDelegate([
+                  TabBar(
+                    labelColor: Colors.black87,
+                    unselectedLabelColor: Colors.grey,
+                    tabs: [
+                      new Tab(icon: new Icon(Icons.info), text: "About Me"),
+                      new Tab(
+                          icon: new Icon(Icons.lightbulb_outline),
+                          text: "Work"),
+                      new Tab(
+                          icon: new Icon(Icons.lightbulb_outline),
+                          text: "Article"),
+                    ],
+                  ),
+                ]),
+              ),
             ),
-          ),
-        ],
+          ];
+        },
+        body: bodyParts(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    ));
+  }
+
+  Widget bodyParts() {
+    return Center(
+      child: Text("Sample text"),
     );
   }
 }
-//    return Scaffold(
-//      appBar: AppBar(
-//        title: Text(widget.title),
-//      ),
-//      body: Center(
-//        child: Column(
-//          mainAxisAlignment: MainAxisAlignment.center,
-//          children: <Widget>[
-//            Padding(
-//              padding: EdgeInsets.all(20.0),
-//              child: Text(
-//                'I am Engineer anymore.',
-//              ),
-//            ),
-//            Expanded(
-//              child: Column(
-//                  mainAxisAlignment: MainAxisAlignment.center,
-//                  children: <Widget>[
-//                Text(
-//                  'You have pushed the button this many times:',
-//                ),
-//                Text(
-//                  '$_counter',
-//                  style: Theme.of(context).textTheme.headline4,
-//                ),
-//              ]),
-//            ),
-//          ],
-//        ),
-//      ),
-//      floatingActionButton: FloatingActionButton(
-//        onPressed: _incrementCounter,
-//        tooltip: 'Increment',
-//        child: Icon(Icons.add),
-//      ), // This trailing comma makes auto-formatting nicer for build methods.
-//    );
-//  }
-//}
