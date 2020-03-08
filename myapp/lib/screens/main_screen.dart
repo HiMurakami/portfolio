@@ -36,8 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: DefaultTabController(
-      length: 3,
+        body: SafeArea(
       child: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
@@ -46,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
               floating: true,
               pinned: true,
               snap: true,
-              actionsIconTheme: IconThemeData(opacity: 0.0),
+              actionsIconTheme: IconThemeData(),
               flexibleSpace: Stack(
                 fit: StackFit.expand,
                 children: <Widget>[
@@ -56,17 +55,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left:200.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "My Portfolio",
-                          style: TextStyle(fontSize: 50.0, color: Colors.white),
-                        ),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "My Portfolio",
+                        style: TextStyle(fontSize: 50.0, color: Colors.white),
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -79,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     labelColor: Colors.black87,
                     unselectedLabelColor: Colors.grey,
                     tabs: [
-                      new Tab(icon: new Icon(Icons.info), text: "About Me"),
+                      new Tab(icon: new Icon(Icons.info), text: "About"),
                       new Tab(
                           icon: new Icon(Icons.lightbulb_outline),
                           text: "Work"),
@@ -93,14 +90,35 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ];
         },
-        body: bodyParts(),
+        body: TabBarView(children: [
+          Column(
+            children: <Widget>[
+              Expanded(child: bodyParts("© Allrights Reserved")),
+//              Text("© Allrights Reserved")
+            ],
+          ),
+          Container(),
+          Container()
+        ]),
       ),
     ));
   }
 
-  Widget bodyParts() {
+  Widget bodyParts(String footter) {
     return Center(
-      child: Text("Sample text"),
+      child: Column(
+        children: <Widget>[
+          Text("Sample text"),
+          Text("Sample text"),
+          Text("Sample text"),
+          Text("Sample text"),
+          Text("Sample text"),
+          Text("Sample text"),
+          Text("Sample text"),
+          Text("Sample text"),
+          Text(footter),
+        ],
+      ),
     );
   }
 }
