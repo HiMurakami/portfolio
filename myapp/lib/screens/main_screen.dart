@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              expandedHeight: 200.0,
+              expandedHeight: 120.0,
               floating: true,
               pinned: true,
               snap: true,
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       Text(
                         "My Portfolio",
-                        style: TextStyle(fontSize: 50.0, color: Colors.white),
+                        style: TextStyle(fontSize: 36.0, color: Colors.white),
                       ),
                     ],
                   )
@@ -77,12 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     labelColor: Colors.black87,
                     unselectedLabelColor: Colors.grey,
                     tabs: [
-                      new Tab(icon: new Icon(Icons.info), text: "About"),
+                      new Tab(icon: new Icon(EvaIcons.person),
+                          text: "About"),
                       new Tab(
-                          icon: new Icon(Icons.lightbulb_outline),
+                          icon: new Icon(EvaIcons.image),
                           text: "Work"),
                       new Tab(
-                          icon: new Icon(Icons.lightbulb_outline),
+                          icon: new Icon(EvaIcons.fileText),
                           text: "Article"),
                     ],
                   ),
