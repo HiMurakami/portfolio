@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -108,17 +109,90 @@ class _MyHomePageState extends State<MyHomePage> {
     return Center(
       child: Column(
         children: <Widget>[
-          Text("Sample text"),
-          Text("Sample text"),
-          Text("Sample text"),
-          Text("Sample text"),
-          Text("Sample text"),
-          Text("Sample text"),
-          Text("Sample text"),
-          Text("Sample text"),
+          myProfile(),
+//          Text("Sample text"),
           Text(footter),
         ],
       ),
     );
   }
+
+  myProfile() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+      child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 120.0,
+              width: 120.0,
+              child: ClipRRect(borderRadius: BorderRadius.circular(30.0),child: Image.asset("assets/images/face.png")),
+          ),
+          Text("むらかみ", style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold)),
+          Column(
+            children: <Widget>[
+              Text(
+                  "現職は某メーカの基板・回路設計。大学院で情報工学を修了し今に至る。"
+                  "RaspberryPi, Arduinoなどを媒体にFlutter, Pytonを独学中。"
+                  "趣味は写真撮影。",
+//                  textAlign: TextAlign.center,
+              ),
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(EvaIcons.twitter),
+                        tooltip: "Twitter",
+                        onPressed: () => print("tap"),
+                      ),
+                      Text("@nbk01409")
+                    ],
+                  ),
+                  SizedBox(width:35.0),
+                  Column(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(EvaIcons.github),
+                        tooltip: "github",
+                        onPressed: () => print("tap"),
+                      ),
+                      Text("HiMurakami")
+                    ],
+                  ),
+                  SizedBox(width:35.0),
+                  Column(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(EvaIcons.email),
+                        tooltip: "Email",
+                        onPressed: () => print("tap"),
+                      ),
+                      Text("nbk.01409\n@gmail.com", textAlign: TextAlign.center,)
+                    ],
+                  ),
+                ],
+              ),
+              Divider(),
+              Text(
+                "History",
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                    "2017.03: 大学院 情報工学修了\n"
+                    "2017.04: 某メーカに就職\n"
+                    "2020.01: Flutterを始める",
+//                  textAlign: TextAlign.center,
+              ),
+              Divider(),
+
+            ],
+          ),
+        ],
+
+      ),
+    );
+  }
 }
+

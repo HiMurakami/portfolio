@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/main_screen.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 void main() => runApp(MyApp());
 
