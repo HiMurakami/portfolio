@@ -22,6 +22,23 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var list = [
+      _photoItem("pic0"),
+      _photoItem("pic1"),
+      _photoItem("pic2"),
+      _photoItem("pic3"),
+      _photoItem("pic4"),
+      _photoItem("pic5"),
+      _photoItem("pic6"),
+      _photoItem("pic7"),
+      _photoItem("pic8"),
+      _photoItem("pic9"),
+      _photoItem("pic10"),
+      _photoItem("pic11"),
+      _photoItem("pic12"),
+
+    ];
+
     return Scaffold(
         body: SafeArea(
       child: NestedScrollView(
@@ -85,7 +102,11 @@ class _MyHomePageState extends State<MyHomePage> {
 //              Text("© Allrights Reserved")
             ],
           ),
-          Text("お気に入りの撮影写真を貼る予定", textAlign: TextAlign.center,),
+//          Text("お気に入りの撮影写真を貼る予定", textAlign: TextAlign.center,),
+          GridView.count(
+              crossAxisCount: 3,
+              children: list
+          ),
           Text("有能な記事を書く予定", textAlign: TextAlign.center,),
         ]),
       ),
@@ -114,12 +135,15 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 120.0,
               child: ClipRRect(borderRadius: BorderRadius.circular(30.0),child: Image.asset("assets/images/face.png")),
           ),
-          Text("むらかみ", style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold)),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("むらかみ", style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold)),
+          ),
           Column(
             children: <Widget>[
               Text(
                   "現職は某メーカの基板・回路設計。大学院で情報工学を修了し今に至る。"
-                  "RaspberryPi, Arduinoなどを媒体にFlutter, Pytonを独学中。"
+                  "RaspberryPi, Arduinoなどを媒体にFlutter, Pythonを独学中。"
                   "趣味は写真撮影。",
 //                  textAlign: TextAlign.center,
               ),
@@ -179,6 +203,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
 
       ),
+    );
+  }
+  Widget _photoItem(String image) {
+    var assetsImage = "assets/images/" + image + ".jpg";
+    return Container(
+      child: Image.asset(assetsImage, fit: BoxFit.cover,),
     );
   }
 }

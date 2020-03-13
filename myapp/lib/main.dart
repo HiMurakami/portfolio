@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Prtfolio on Flutter',
       theme: ThemeData(
         primarySwatch: Colors.grey,
         fontFamily: "Pridi",
@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       home: DefaultTabController(
           length: 3,
           child: MyHomePage(title: 'Flutter Demo Home Page')),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
